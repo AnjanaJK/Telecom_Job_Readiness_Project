@@ -1,0 +1,39 @@
+<div class="container-flex p-5">
+    <div class="body mt-5">
+
+        <h2 class="text-center">
+            My Profile
+        </h2>
+
+        <table class="table table-bordered bg-light " *ngFor="let info of data">
+            <tr>
+                <th>Full Name:</th>
+                <td>{{info[0]}}</td>
+
+            </tr>
+            <tr>
+                <th>Pincode:</th>
+                <td>{{info[1]}}</td>
+
+
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{info[2]}}</td>
+
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{info[3]}}</td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td>
+                    {{info[4]}}<br>
+                    <a href="change-pass" class="btn btn-outline-secondary mt-1">Change Password</a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,116 @@
+<div class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <a class="navbar-brand" href="#" style="font-weight: 600;">ABC Telecom</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-weight: 500;">
+
+            <ul class="navbar-nav mr-auto">
+
+                <ng-container *ngIf="showAdminUrl()">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin-dashboard">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin-all-cust">All Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin-all-eng">All Engineers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin-all-mngr">All Managers</a>
+                    </li>
+                </ng-container>
+
+                <ng-container *ngIf="userRole === 'Customer'"> <!---->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/customer-dashboard">Home<span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">My Profile</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/new-ticket">New Ticket</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/transactions">Transactions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/my-cheque-book">Request for Cheque Book</a>
+                    </li> -->
+                </ng-container>
+
+                <ng-container *ngIf="userRole === 'Manager'"> <!---->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/manager-dashboard">Home<span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/manager-dashboard">All Engineers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/manager-view-tickets">All Tickets</a>
+                    </li>
+                </ng-container>
+
+                <ng-container *ngIf="userRole === 'Engineer'"> <!---->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/engineer-dashboard">Dashboard<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                </ng-container>
+
+                <ng-container *ngIf="!userRole">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About Us</a>
+                    </li>
+                </ng-container>
+
+
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li> -->
+
+
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <!-- Show Logout button for authenticated users -->
+                <div style="margin-top: 5px;">
+                    <li class="nav-item" *ngIf="userRole==='Admin'">
+                        <span class="p-3">[ ADMIN Mode ]</span>
+                    </li>
+
+                    <li *ngIf="userRole === 'Customer'" class="mr-2">
+                        <span>Name: {{custName}}</span>
+                    </li>
+
+                    <li *ngIf="userRole === 'Engineer'" class="mr-2">
+                        <span>Engineer: {{userName}}</span>
+                    </li>
+
+                    <li *ngIf="userRole === 'Manager'" class="mr-2">
+                        <span>Manager: {{userName}}</span>
+                    </li>
+                </div>
+
+
+
+                <li class="nav-item" *ngIf="userRole">
+                    <button class="btn btn-danger" (click)="logout()">Logout</button>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</div>

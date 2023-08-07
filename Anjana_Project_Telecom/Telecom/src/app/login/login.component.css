@@ -1,0 +1,56 @@
+/* .image-div { */
+/* height: 100%; */
+/* Set the height to fill the whole viewport (100% of the available height) */
+/* background-image: url('path/to/your/image.jpg'); */
+/* background-size: cover; */
+/* This will make the image cover the entire div */
+/* background-position: center; */
+/* Center the image within the div */
+/* } */
+
+/*  */
+
+.login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.087);
+    /* padding: 20px; */
+    border-radius: 10px;
+    max-width: 100%;
+    /* width: 80%; */
+    /* text-align: center; */
+}
+
+/* Style the form icons */
+.fa {
+    padding: 10px;
+    background-color: rgba(135, 168, 201, 0.135);
+    /* color: white; */
+    min-width: 50px;
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.message {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: #4caf4fba;
+    color: white;
+}
+
+.failure {
+    background-color: #f44336c9;
+    color: white;
+}

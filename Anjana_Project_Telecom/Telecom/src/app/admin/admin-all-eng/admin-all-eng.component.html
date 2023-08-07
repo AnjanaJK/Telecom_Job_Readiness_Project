@@ -1,0 +1,54 @@
+<div class="container-flex p-5">
+    <div class="body">
+        <div>
+            <h2 style="float: left;">
+                All Engineers
+            </h2>
+            <span style="float: right;">
+                <a href="/add-new-eng">
+                    <button class="btn btn-primary">
+                        <i class="fa-solid fa-plus"></i> Add New Engineer
+                    </button>
+                </a>
+            </span>
+        </div>
+        <br>
+
+        <div *ngIf="getMessage()" [ngClass]="getMessageClass()" class="message" style="margin-top: 2%;">
+            {{ getMessage() }}
+        </div>
+
+        <table class="table table-striped bg-light text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Eng ID</th>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Manager</th>
+                    <th>Pincode</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of data">
+                <tr>
+                    <td>{{item[0]}}</td>
+                    <td>{{item[1]}}</td>
+                    <td>{{item[2]}}</td>
+                    <td>{{item[3]}}</td>
+                    <td>{{item[4]}}</td>
+                    <td>{{item[5]}}</td>
+                    <td>
+                        <button class="btn btn-info" (click)="editEngineer(item[0], item[1])">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <button class="btn btn-danger ml-2" (click)="deleteEngineer(item[0], item[1])">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

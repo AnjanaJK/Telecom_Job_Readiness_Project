@@ -1,0 +1,90 @@
+<div class="container-flex p-5">
+    <div class="body">
+
+        <span style="float: left;">
+            <h2>Welcome {{engineerName}}</h2>
+        </span>
+        <!-- <span style="float: right;">
+            <a href="/new-ticket">
+                <button class="btn btn-lg alert-success mr-2">
+                    <i class="fa-solid fa-plus"></i>
+                    Raise New Ticket
+                </button>
+            </a>
+            <a href="resolved-tickets">
+                <button class="btn btn-lg alert-primary">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    View Past Tickets
+                </button>
+            </a>
+        </span><br><br><br> -->
+
+        <br><br><br>
+        <h3>Tickets assigned to {{engineerName}}</h3>
+
+        <table class="table table-light table-bordered text-center">
+            <thead class="bg-dark text-light">
+                <tr>
+                    <th>Date</th>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <!-- <th>To</th> -->
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of data">
+                <tr>
+                    <td>{{item[0]}}</td><!--Date-->
+                    <td>{{item[1]}}</td><!--ID-->
+                    <td><!--Type-->
+                        <span>
+                            <span *ngIf="item[2] === 'neitherMakeReceive'">
+                                Neither make or receive calls
+                            </span>
+                            <span *ngIf="item[2] === 'cannotMakeReceive'">
+                                Cannot make a call, but receive a call
+                            </span>
+                            <span *ngIf="item[2] === 'canMakeCannotReceive'">
+                                Can make calls, but cannot receive calls
+                            </span>
+                        </span>
+                    </td>
+                    <td>{{item[3]}}</td><!--Name-->
+                    <td>{{item[4]}}</td><!--Description-->
+                    <!-- <td>{{item[6]}}</td> Engineer Name -->
+                    <td>
+                        <span *ngIf="item[5] === 'RAISED'">
+                            <span class="text-primary" style="font-weight: 700;">
+                                {{item[5]}}
+                            </span>
+                        </span>
+                        <span *ngIf="item[5] === 'ESCALATED'">
+                            <span class="text-danger" style="font-weight: 700;">
+                                {{item[5]}}
+                            </span>
+                        </span>
+                        <span *ngIf="item[5] === 'WIP'">
+                            <span class="text-info" style="font-weight: 700;">
+                                {{item[5]}}
+                            </span>
+                        </span>
+                        <span *ngIf="item[5] === 'RESOLVED'">
+                            <span class="text-success" style="font-weight: 700;">
+                                {{item[5]}}
+                            </span>
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-info" (click)="viewTicket(item[1])">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

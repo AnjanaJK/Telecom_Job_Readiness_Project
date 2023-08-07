@@ -1,0 +1,10 @@
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.491);
+    /* color: white; */
+    padding-left: 1%;
+    font-weight: 600;
+}

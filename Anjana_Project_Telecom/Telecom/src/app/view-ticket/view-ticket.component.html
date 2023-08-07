@@ -1,0 +1,164 @@
+<div class="container-flex p-5">
+    <div class="body">
+
+        <div class="card p-1 m-5">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h2>Ticket #{{ticketId}}</h2>
+                    </div>
+
+                    <div style="text-align: right ;">
+                        <div class="col">
+                            <b>Assigned To: <span class="text-primary">{{ticket.assignedEngineer}}</span></b>
+                        </div>
+                        <div class="col">
+                            <b>Status:
+                                <span *ngIf="ticket.status === 'RAISED'" class="text-primary text">
+                                    {{ticket.status}}
+                                </span>
+                                <span *ngIf="ticket.status === 'RESOLVED'" class="text-success text">
+                                    {{ticket.status}}
+                                </span>
+                                <span *ngIf="ticket.status === 'ESCALATED'" class="text-danger text">
+                                    {{ticket.status}}
+                                </span>
+                                <span *ngIf="ticket.status === 'WIP'" class="text-info text">
+                                    {{ticket.status}}
+                                </span>
+                            </b>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- <form (ngSubmit)="sendTicket()" method="post"> -->
+                <div class="row">
+
+                </div>
+
+                <div class="form-group">
+                    Full Name:
+                    <input type="text" class="form-control" name="custName" placeholder="Xyz Abc"
+                        [(ngModel)]="ticket.custName" readonly>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            Address:
+                            <input type="text" class="form-control" name="custAddress" [(ngModel)]="ticket.custAddress"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="col">
+
+                        <div class="form-group">
+                            Pin Code:
+                            <input type="text" class="form-control" name="custPinCode" placeholder="e.g. 400002"
+                                [(ngModel)]="ticket.custPinCode" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <textarea name="problemDesc" class="form-control" rows="6" cols="50" style="resize: none;"
+                                placeholder="Problem Description..." [(ngModel)]="ticket.problemDesc"
+                                readonly></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-group">
+                            Type of Problem:
+                            <input type="text" class="form-control" name="problemType" class="form-control"
+                                [(ngModel)]="ticket.problemType" readonly>
+                        </div>
+                        <div class="form-group">
+                            Telephone/Mobile No:
+                            <input type="text" class="form-control" name="custPhoneNo" [(ngModel)]="ticket.custPhoneNo"
+                                readonly>
+                        </div>
+
+                        <span *ngIf="userRole === 'Engineer'">
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-outline-success btn-sm btn-block"
+                                        (click)="markResolved()">Resolved</button>
+
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-outline-danger btn-sm btn-block"
+                                        (click)="markEscalated()">Escalated</button>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+
+
+
+
+
+                </div>
+                <span *ngIf="userRole === 'Customer'">
+                    <span *ngIf="ticket.status === 'ESCALATED'" class="text-danger">
+                        Your ticket is {{ticket.status}}. We will resolve your issue as soon as possible
+                    </span>
+                    <span *ngIf="ticket.status === 'RESOLVED'" class="text-success" style="font-weight: 600;">
+                        Your query is Resolved!
+                        Please provide feedback:
+                        <textarea name="problemDesc" class="form-control" rows="6" cols="50" style="resize: none;"
+                            placeholder="(optional)" [(ngModel)]="feedback"></textarea>
+                        <button class="btn btn-primary mt-2">Submit Feedback</button>
+                    </span>
+
+                </span>
+
+                <br>
+                <br>
+                <h3>
+                    Comments:
+                </h3>
+                <textarea name="problemDesc" class="form-control" rows="3" cols="50" style="resize: none;"
+                    [(ngModel)]="newCommentText"></textarea>
+                <span *ngIf="ticket.status === 'RESOLVED'; else otherCase">
+                    <button class="btn btn-primary mt-2" (click)="addComment()" disabled>Reply</button>
+                </span>
+
+                <ng-template #otherCase>
+                    <button class="btn btn-primary mt-2" (click)="addComment()">Reply</button>
+                </ng-template>
+
+
+
+
+                <!-- </form> -->
+
+                <!-- Display comments -->
+                <!-- <h3>Comments:</h3> --><br><br>
+                <div *ngFor="let comment of comments">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <strong>Comment By: </strong>
+                                <span *ngIf="comment.commentBy === custName; else otherUser" class="text-primary"
+                                    style="font-weight: 600;">You</span>
+                                <ng-template #otherUser>
+                                    <span class="text-success" style="font-weight: 600;">
+                                        {{ comment.commentBy }}
+                                    </span>
+                                </ng-template>
+                            </p>
+                            <p><strong>Date:</strong> {{ comment.commentDate | date:'MMMM d, yyyy HH:mm:ss' }}</p>
+                            <p><strong>Comment:</strong> {{ comment.commentText }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

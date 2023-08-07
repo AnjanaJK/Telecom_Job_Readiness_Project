@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+.message {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: #4caf4fba;
+    color: rgb(13, 86, 0);
+}
+
+.failure {
+    background-color: #f44336c9;
+    color: white;
+}
+
+.body {
+    margin-top: 2%;
+}

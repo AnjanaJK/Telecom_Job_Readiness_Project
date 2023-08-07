@@ -1,0 +1,33 @@
+.btn {
+    /* Set the desired width for the buttons */
+    width: 500px;
+    /* Add padding around the text inside the buttons */
+    padding: 40px;
+    margin-left: 60%;
+    margin-top: 10%;
+    font-size: larger;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+}
+
+.btn1 {
+    background-color: #4C443C;
+}
+
+.btn2 {
+    background-color: #322214;
+}
+
+.btn3 {
+    background-color: #2c1c1c;
+}
+
+
+/* Style the buttons on hover */
+.btn:hover {
+    /* Set the background color to black on hover */
+    background-color: rgba(164, 161, 161, 0.559);
+    color: black;
+}

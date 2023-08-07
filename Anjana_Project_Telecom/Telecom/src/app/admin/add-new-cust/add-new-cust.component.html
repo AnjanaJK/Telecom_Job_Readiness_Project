@@ -1,0 +1,59 @@
+<div class="container-flex p-5">
+    <div class="body">
+        <h2 class="text-center pt-2">
+            Add New Customer
+        </h2>
+
+        <div class="container">
+            <div *ngIf="getMessage()" [ngClass]="getMessageClass()" class="message alert ">
+                {{ getMessage() }}
+            </div>
+
+            <div *ngIf="!custCreateForm.valid && custCreateForm.submitted" class="alert alert-danger">
+                All fields are required!
+            </div>
+        </div>
+
+        <div class="card" style="margin-left: 25%;">
+            <div class="card-body">
+                <form (ngSubmit)="addNewCust()" #custCreateForm="ngForm" method="post">
+
+                    <div class="form-group">
+                        Customer Full Name:
+                        <input type="text" class="form-control" name="custName" [(ngModel)]="cust.custName" required>
+                    </div>
+
+                    <div class="form-group">
+                        Customer Email:
+                        <input type="text" class="form-control" name="custEmail" [(ngModel)]="cust.custEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        Customer Username:
+                        <input type="text" class="form-control" name="custUsername" [(ngModel)]="user.userUsername"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        Customer Password:
+                        <input type="password" class="form-control" name="custPassword" [(ngModel)]="user.userPassword"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        Customer Pin Code:
+                        <input type="text" class="form-control" name="custPinCode" [(ngModel)]="cust.custPinCode"
+                            placeholder="eg. 400001" required>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-outline-success">Add Customer</button>
+                        <button class="btn btn-outline-danger ml-3" (click)="onCancelClick()">Cancel</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

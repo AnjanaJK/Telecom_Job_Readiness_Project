@@ -1,0 +1,86 @@
+<div class="container-flex p-5">
+    <div class="body">
+
+        <span style="float: left;">
+            <h2>Welcome {{custName}}</h2>
+        </span>
+        <span style="float: right;">
+            <a href="/new-ticket">
+                <button class="btn btn-lg alert-success mr-2">
+                    <i class="fa-solid fa-plus"></i>
+                    Raise New Ticket
+                </button>
+            </a>
+            <a href="resolved-tickets">
+                <button class="btn btn-lg alert-primary">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    View Past Tickets
+                </button>
+            </a>
+        </span><br><br><br>
+
+
+        <h3>Unresolved Tickets</h3>
+
+        <div *ngIf="getMessage()" [ngClass]="getMessageClass()" class="message" style="margin-top: 2%;">
+            {{ getMessage() }}
+        </div>
+
+
+        <table class="table table-light table-bordered text-center">
+            <thead class="bg-dark text-light">
+                <tr>
+                    <th>Date</th>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of data">
+                <tr>
+                    <td>{{item[0]}}</td>
+                    <td>{{item[1]}}</td>
+                    <td>
+                        <span>
+                            <span *ngIf="item[2] === 'neitherMakeReceive'">
+                                Neither make or receive calls
+                            </span>
+                            <span *ngIf="item[2] === 'cannotMakeReceive'">
+                                Cannot make a call, but receive a call
+                            </span>
+                            <span *ngIf="item[2] === 'canMakeCannotReceive'">
+                                Can make calls, but cannot receive calls
+                            </span>
+                        </span>
+                    </td>
+                    <td>{{item[3]}}</td>
+                    <td>
+                        <span *ngIf="item[4] === 'RAISED'">
+                            <span class="text-primary" style="font-weight: 700;">
+                                {{item[4]}}
+                            </span>
+                        </span>
+                        <span *ngIf="item[4] === 'ESCALATED'">
+                            <span class="text-danger" style="font-weight: 700;">
+                                {{item[4]}}
+                            </span>
+                        </span>
+                        <span *ngIf="item[4] === 'WIP'">
+                            <span class="text-info" style="font-weight: 700;">
+                                {{item[4]}}
+                            </span>
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-info" (click)="viewTicket(item[1])">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

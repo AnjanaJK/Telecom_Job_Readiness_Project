@@ -1,0 +1,18 @@
+.btn1 {
+    width: 500px;
+    margin-left: 8%;
+    font-size: larger;
+    font-weight: 600;
+}
+
+
+/* Style the buttons on hover */
+.btn1:hover {
+    /* Set the background color to black on hover */
+    background-color: rgba(0, 0, 0, 0.916);
+    color: rgb(255, 255, 255);
+}
+
+.text {
+    font-weight: 700;
+}

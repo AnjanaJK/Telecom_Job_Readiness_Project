@@ -1,0 +1,47 @@
+<div class="container-flex p-5">
+    <div class="body">
+
+        <table class="table">
+            <tr>
+                <td class="text-center" colspan="2">
+                    <h2>Welcome {{name}}</h2>
+                    <h2>Pin Code: {{pin}}</h2>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <a href="/manager-dashboard">
+                        <button class="btn alert-primary">
+                            View all Engineers
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="/manager-view-tickets">
+                        <button class="btn alert-success">
+                            View All Tickets
+                        </button>
+                    </a>
+                </td>
+            </tr>
+
+        </table>
+
+        <table class="table table-bordered" style="width: 50%; margin-left: 25%;">
+            <thead class="bg-dark text-center text-light">
+                <tr>
+                    <th style="width: 10%;">Engineer ID</th>
+                    <th style="width: 50%;">Name</th>
+                </tr>
+            </thead>
+            <tbody class="text-center" *ngFor="let item of data">
+                <tr>
+                    <td>{{item[0]}}</td>
+                    <td>{{item[1]}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

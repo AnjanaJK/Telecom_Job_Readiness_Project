@@ -1,0 +1,8 @@
+.header {
+    position: fixed;
+    /* left: 0; */
+    /* bottom: 0; */
+    width: 100%;
+    background-color: #0000007d;
+    color: white;
+}

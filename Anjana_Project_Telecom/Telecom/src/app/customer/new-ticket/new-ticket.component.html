@@ -1,0 +1,72 @@
+<div class="container-flex p-5">
+    <div class="body">
+
+        <div class="card p-1 m-5">
+            <div class="card-body">
+                <h2>New Ticket</h2>
+
+                <form (ngSubmit)="sendTicket()" method="post">
+
+                    <div class="form-group">
+                        Full Name:
+                        <input type="text" class="form-control" name="custName" placeholder="Xyz Abc"
+                            [(ngModel)]="ticket.custName" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                Address:
+                                <input type="text" class="form-control" name="custAddress"
+                                    [(ngModel)]="ticket.custAddress" required>
+                            </div>
+                        </div>
+                        <div class="col">
+
+                            <div class="form-group">
+                                Pin Code:
+                                <input type="text" class="form-control" name="custPinCode" placeholder="e.g. 400002"
+                                    [(ngModel)]="custPinCode" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <textarea name="problemDesc" class="form-control" rows="6" cols="50"
+                                    style="resize: none;" placeholder="Problem Description..."
+                                    [(ngModel)]="ticket.problemDesc"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                Type of Problem:
+                                <select name="problemType" class="form-control" [(ngModel)]="ticket.selectedProblem">
+                                    <option value="">Select...</option>
+                                    <option value="cannotMakeReceive">Cannot make a call, but receive a call</option>
+                                    <option value="canMakeCannotReceive">Can make calls, but cannot receive calls
+                                    </option>
+                                    <option value="neitherMakeReceive">neither make or receive calls</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                Telephone/Mobile No:
+                                <input type="text" class="form-control" name="custPhoneNo"
+                                    [(ngModel)]="ticket.custPhoneNo" required>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <button class="btn btn-primary btn-block p-2">Send Ticket</button>
+
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
